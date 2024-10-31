@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Device</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Device</h1>
+        <button onclick="location.href='index.html';">Home</button>
+        <form id="deleteForm">
+            <label for="searchType">Search by:</label>
+            <select id="searchType" name="searchType">
+                <option value="ip">IP Address</option>
+                <option value="mac">MAC Address</option>
+            </select>
+            <br>
+            <label for="searchValue">Enter IP or MAC:</label>
+            <input type="text" id="searchValue" name="searchValue" required>
+            <br>
+            <button type="submit">Delete Device</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

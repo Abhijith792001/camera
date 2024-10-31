@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Devices</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Add Network Devices</h1>
+    <button id="homeButton" onclick="location.href='index.html';">Home</button>
+    
+    <div class="container">
+        <div class="form-section">
+            <h2>Select Device Type</h2>
+            <select id="deviceType" onchange="toggleDeviceForm()">
+                <option value="">Select Device</option>
+                <option value="switch">Add Switch</option>
+                <option value="camera">Add Camera</option>
+            </select>
+        </div>
+
+        <div id="switchFormContainer" class="form-section" style="display:none;">
+            <h2>Add Network Switch</h2>
+            <form id="switchForm">
+                <input type="text" class="small" id="switchBrand" placeholder="Brand" required>
+                <input type="text" class="small" id="switchLocation" placeholder="Location" required>
+                <input type="text" class="small" id="switchIP" placeholder="IP (10.0.0.1)" required>
+                <input type="text" class="small" id="switchMAC" placeholder="MAC (00-00-00-00-00-00)" required oninput="formatMAC(this)">
+                <input type="number" class="small" id="switchPorts" placeholder="Port Count" required>
+                <button type="submit">Add Switch</button>
+            </form>
+        </div>
+
+        <div id="cameraFormContainer" class="form-section" style="display:none;">
+            <h2>Add Camera</h2>
+            <form id="cameraForm">
+                <input type="text" class="small" id="cameraBrand" placeholder="Brand" required>
+                <input type="text" class="small" id="cameraLocation" placeholder="Location" required>
+                <input type="text" class="small" id="cameraIP" placeholder="IP (192.168.2.1-254)" required>
+                <input type="text" class="small" id="cameraMAC" placeholder="MAC (00-00-00-00-00-00)" required oninput="formatMAC(this)">
+                <select class="small" id="connectedSwitch" required>
+                    <option value="">Select Switch</option>
+                </select>
+                <input type="number" class="small" id="cameraPort" placeholder="Connected Port" required>
+                <button type="submit">Add Camera</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleDeviceForm() {
+            const deviceType = document.getElementById('deviceType').value;
+            document.getElementById('switchFormContainer').style.display = deviceType === 'switch' ? 'block' : 'none';
+            document.getElementById('cameraFormContainer').style.display = deviceType === 'camera' ? 'block' : 'none';
+        }
+
+        function formatMAC(input) {
+            // Remove non-hex characters
+            let value = input.value.replace(/[^0-9A-Fa-f]/g, '');
+
+            // Add hyphens
+            if (value.length > 2) {
+                value = value.match(/.{1,2}/g).join('-');
+            }
+            input.value = value.substring(0, 17); // Limit to 17 characters
+        }
+    </script>
+</body>
+</html>
