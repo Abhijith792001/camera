@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Asset Management - Home</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Asset Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="add.html">Add Device</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Search Devices</h2>
+        <form id="searchForm" onsubmit="searchDevice(event)">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Search by IP, MAC, Location, or Brand" id="searchQuery">
+                </div>
+                <div class="col">
+                    <select id="deviceTypeFilter" class="form-control">
+                        <option value="">All Devices</option>
+                        <option value="camera">Camera</option>
+                        <option value="switch">Switch</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button type="button" class="btn btn-secondary" id="clearSearch" onclick="clearSearch()">Clear Search</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="searchResults" class="mt-4">
+            <!-- Search results will be displayed here -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Add Device</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Asset Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="add.html">Add Device</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Add Device</h2>
+        <form id="deviceForm">
+            <div class="form-group">
+                <label for="deviceType">Device Type</label>
+                <select id="deviceType" class="form-control" onchange="toggleForms()">
+                    <option value="">Select Device Type</option>
+                    <option value="camera">Camera</option>
+                    <option value="switch">Switch</option>
+                </select>
+            </div>
+
+            <div id="cameraForm" style="display: none;">
+                <h4>Camera Details</h4>
+                <div class="form-group">
+                    <label for="cameraBrand">Brand</label>
+                    <input type="text" class="form-control" id="cameraBrand" required>
+                </div>
+                <div class="form-group">
+                    <label for="cameraIP">IP Address</label>
+                    <input type="text" class="form-control" id="cameraIP" placeholder="192.168.1.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="cameraLocation">Location</label>
+                    <input type="text" class="form-control" id="cameraLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="cameraMAC">MAC Address</label>
+                    <input type="text" class="form-control" id="cameraMAC" placeholder="00:00:00:00:00:00" required>
+                </div>
+                <div class="form-group">
+                    <label for="cameraSwitch">Connected Switch</label>
+                    <select id="cameraSwitch" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label for="cameraPort">Switch Port</label>
+                    <select id="cameraPort" class="form-control"></select>
+                </div>
+            </div>
+
+            <div id="switchForm" style="display: none;">
+                <h4>Switch Details</h4>
+                <div class="form-group">
+                    <label for="switchBrand">Brand</label>
+                    <input type="text" class="form-control" id="switchBrand" required>
+                </div>
+                <div class="form-group">
+                    <label for="switchIP">IP Address</label>
+                    <input type="text" class="form-control" id="switchIP" placeholder="10.0.0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="switchLocation">Location</label>
+                    <input type="text" class="form-control" id="switchLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="switchMAC">MAC Address</label>
+                    <input type="text" class="form-control" id="switchMAC" placeholder="00:00:00:00:00:00" required>
+                </div>
+                <div class="form-group">
+                    <label for="switchPort">Switch Port</label>
+                    <input type="text" class="form-control" id="switchPort" required>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addDevice()">Add Device</button>
+        </form>
+    </div>
+</body>
+</html>
